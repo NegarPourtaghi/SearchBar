@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import SearchBar from "./SearchBar";
+import SearchResaultsList from "./SearchResaultsList";
+import SearchResault from "./SearchResault";
+import Header from "./Header";
+import { Ripple, initTE } from "tw-elements";
 
+initTE({ Ripple });
 function App() {
+  const [resaults, setResaults] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <SearchBar setResaults={setResaults} />
+      <SearchResaultsList resaults={resaults} />
+      <div>
+        <SearchResault />
+      </div>
     </div>
   );
 }
 
 export default App;
+
